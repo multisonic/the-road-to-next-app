@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { initialTickets } from "@/data";
 
 type TicketPageProps = {
@@ -11,7 +12,16 @@ const TicketPage = async ({ params }: TicketPageProps) => {
   const ticket = initialTickets.find((ticket) => ticket.id === ticketId);
 
   if (!ticket) {
-    return <div>Ticket not found</div>;
+    return (
+      <div>
+        <h2 className="text-lg">Ticket not found</h2>
+        <p className="text-sm">
+          <Link href="/tickets" className="text-sm underline">
+            Back to Tickets
+          </Link>
+        </p>
+      </div>
+    );
   }
 
   return (
