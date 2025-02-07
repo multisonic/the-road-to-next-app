@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { ticketsPath } from "@/paths";
 
 const HomePage = () => {
   return (
@@ -8,7 +9,7 @@ const HomePage = () => {
       {/* <a href="/tickets" className="text-sm underline">
         Go to Tickets
       </a> */}
-      <Link href="/tickets" className="text-sm underline">
+      <Link href={ticketsPath()} className="text-sm underline">
         Go to Tickets
       </Link>
     </div>
