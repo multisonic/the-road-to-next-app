@@ -8,7 +8,6 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { Separator } from "@/components/ui/separator";
 import { LucideFileText, LucideCheckCircle, LucidePencil } from "lucide-react";
 import Heading from "@/components/heading";
 
