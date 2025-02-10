@@ -4,9 +4,6 @@ import { Ticket } from "../types";
 export const getTickets = async (): Promise<Ticket[]> => {
   await new Promise((resolve) => setTimeout(resolve, 2000));
 
-  // deliberate error for testing
-  throw new Error("Oops!");
-
   return new Promise((resolve) => {
     resolve(initialTickets);
   });
