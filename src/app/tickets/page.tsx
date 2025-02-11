@@ -5,7 +5,7 @@ import { TicketList } from "@/features/ticket/components/ticket-list";
 import { Suspense } from "react";
 import { ErrorBoundary } from "react-error-boundary";
 
-export const dynamic = "force-dynamic";
+export const revalidate = 30;
 
 const TicketsPage = async () => {
   return (
