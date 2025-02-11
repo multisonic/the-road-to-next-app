@@ -5,7 +5,9 @@ import { TicketList } from "@/features/ticket/components/ticket-list";
 import { Suspense } from "react";
 import { ErrorBoundary } from "react-error-boundary";
 
-const TicketsPage = () => {
+export const dynamic = "force-dynamic";
+
+const TicketsPage = async () => {
   return (
     <div className="flex-1 flex flex-col gap-y-8">
       <Heading title="Tickets" description="All your tickets in one place" />
