@@ -25,16 +25,6 @@ const TicketItem = ({ ticket, isDetail }: TicketItemProps) => {
   );
 
   const handleDeleteTicket = async () => {
-    // MOVED TO SEPARATE FILE
-    // WONT WORK OTHERWISE
-    // "../actions/delete-ticket"
-    //
-    // "use server";
-    // await prisma.ticket.delete({
-    //   where: {
-    //     id: ticket.id,
-    //   },
-    // });
     await deleteTicket(ticket.id);
   };
 
