@@ -30,6 +30,9 @@ const TicketUpsertForm = ({ ticket }: TicketUpsertFormProps) => {
           (actionState.payload?.get("title") as string) ?? ticket?.title
         }
       />
+      <span className="text-xs text-red-500">
+        {actionState.fieldErrors.title?.[0]}
+      </span>
 
       <Label htmlFor="content"></Label>
       <Textarea
@@ -39,6 +42,9 @@ const TicketUpsertForm = ({ ticket }: TicketUpsertFormProps) => {
           (actionState.payload?.get("content") as string) ?? ticket?.content
         }
       />
+      <span className="text-xs text-red-500">
+        {actionState.fieldErrors.content?.[0]}
+      </span>
 
       <SubmitButton label={ticket ? "Edit" : "Create"} />
       {actionState.message}
