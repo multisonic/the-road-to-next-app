@@ -2,7 +2,6 @@ import { notFound } from "next/navigation";
 import { CardCompact } from "@/components/card-compact";
 import { TicketUpdateForm } from "@/features/ticket/components/ticket-update-form";
 import { getTicket } from "@/features/ticket/queries/get-ticket";
-import { AlignCenter } from "lucide-react";
 
 type TicketEditPageProps = {
   params: Promise<{
