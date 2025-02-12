@@ -1,14 +1,15 @@
 "use server";
 
-import { revalidatePath } from "next/cache";
-import { redirect } from "next/navigation";
-import { prisma } from "@/lib/prisma";
-import { ticketPath, ticketsPath } from "@/paths";
-import { z } from "zod";
 import {
   ActionState,
   fromErrorToActionState,
+  toActionState,
 } from "@/components/form/utils/to-action-state";
+import { prisma } from "@/lib/prisma";
+import { ticketPath, ticketsPath } from "@/paths";
+import { revalidatePath } from "next/cache";
+import { redirect } from "next/navigation";
+import { z } from "zod";
 
 const upsertTicketSchema = z.object({
   title: z.string().min(1).max(191),
@@ -40,5 +41,5 @@ export const upsertTicket = async (
     redirect(ticketPath(id));
   }
 
-  return { message: "Ticket created" };
+  return toActionState("SUCCESS", "Ticket created");
 };
