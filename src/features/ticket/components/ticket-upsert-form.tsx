@@ -1,7 +1,7 @@
 "use client";
 
 import { FieldError } from "@/components/form/field-error";
-import { useActionFeedback } from "@/components/form/hooks/use-action-feedback";
+import { Form } from "@/components/form/form";
 import { SubmitButton } from "@/components/form/submit-button";
 import { EMPTY_ACTION_STATE } from "@/components/form/utils/to-action-state";
 import { Input } from "@/components/ui/input";
@@ -10,8 +10,6 @@ import { Textarea } from "@/components/ui/textarea";
 import { Ticket } from "@prisma/client";
 import { useActionState } from "react";
 import { upsertTicket } from "../actions/upsert-ticket";
-import { toast } from "sonner";
-import { Form } from "@/components/form/form";
 
 type TicketUpsertFormProps = {
   ticket?: Ticket;
@@ -22,19 +20,6 @@ const TicketUpsertForm = ({ ticket }: TicketUpsertFormProps) => {
     upsertTicket.bind(null, ticket?.id),
     EMPTY_ACTION_STATE
   );
-
-  useActionFeedback(actionState, {
-    onSuccess: ({ actionState }) => {
-      if (actionState.message) {
-        toast.success(actionState.message);
-      }
-    },
-    onError: ({ actionState }) => {
-      if (actionState.message) {
-        toast.error(actionState.message);
-      }
-    },
-  });
 
   return (
     <Form action={action} actionState={actionState}>
