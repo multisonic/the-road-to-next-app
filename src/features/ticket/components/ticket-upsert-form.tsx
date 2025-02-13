@@ -38,7 +38,7 @@ const TicketUpsertForm = ({ ticket }: TicketUpsertFormProps) => {
 
   return (
     <Form action={action} actionState={actionState}>
-      <Label htmlFor="title"></Label>
+      <Label htmlFor="title">Title</Label>
       <Input
         id="title"
         name="title"
@@ -49,7 +49,7 @@ const TicketUpsertForm = ({ ticket }: TicketUpsertFormProps) => {
       />
       <FieldError actionState={actionState} name="title" />
 
-      <Label htmlFor="content"></Label>
+      <Label htmlFor="content">Content</Label>
       <Textarea
         id="content"
         name="content"
