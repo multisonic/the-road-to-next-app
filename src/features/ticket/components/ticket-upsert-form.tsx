@@ -21,30 +21,16 @@ const TicketUpsertForm = ({ ticket }: TicketUpsertFormProps) => {
     EMPTY_ACTION_STATE
   );
 
-  const options = useMemo(
-    () => ({
-      onSuccess: ({ actionState }: { actionState: ActionState }) => {
-        console.log(actionState);
-        // TODO optionally handle success
-      },
-      onError: ({ actionState }: { actionState: ActionState }) => {
-        console.log(actionState);
-        // TODO optionally handle error
-      },
-    }),
-    []
-  );
-
-  // useActionFeedback(actionState, {
-  //   onSuccess: ({ actionState }) => {
-  //     console.log(actionState.message);
-  //     // TODO optionally handle success
-  //   },
-  //   onError: ({ actionState }) => {
-  //     console.log(actionState.message);
-  //     // TODO optionally handle error
-  //   },
-  // });
+  useActionFeedback(actionState, {
+    onSuccess: ({ actionState }) => {
+      console.log(actionState.message);
+      // TODO optionally handle success
+    },
+    onError: ({ actionState }) => {
+      console.log(actionState.message);
+      // TODO optionally handle error
+    },
+  });
 
   return (
     <form action={action} className="flex flex-col gap-y-2">

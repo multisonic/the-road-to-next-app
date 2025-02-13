@@ -21,7 +21,7 @@ const useActionFeedback = (
     if (actionState.status === "ERROR") {
       options.onError?.({ actionState });
     }
-  }, [actionState, options]);
+  }, [actionState]);
 };
 
 export { useActionFeedback };
