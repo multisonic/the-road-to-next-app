@@ -1,13 +1,14 @@
 "use client";
 
+import { FieldError } from "@/components/form/field-error";
 import { SubmitButton } from "@/components/form/submit-button";
+import { EMPTY_ACTION_STATE } from "@/components/form/utils/to-action-state";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Ticket } from "@prisma/client";
-import { upsertTicket } from "../actions/upsert-ticket";
 import { useActionState } from "react";
-import { EMPTY_ACTION_STATE } from "@/components/form/utils/to-action-state";
+import { upsertTicket } from "../actions/upsert-ticket";
 
 type TicketUpsertFormProps = {
   ticket?: Ticket;
@@ -30,9 +31,7 @@ const TicketUpsertForm = ({ ticket }: TicketUpsertFormProps) => {
           (actionState.payload?.get("title") as string) ?? ticket?.title
         }
       />
-      <span className="text-xs text-red-500">
-        {actionState.fieldErrors.title?.[0]}
-      </span>
+      <FieldError actionState={actionState} name="title" />
 
       <Label htmlFor="content"></Label>
       <Textarea
@@ -42,9 +41,7 @@ const TicketUpsertForm = ({ ticket }: TicketUpsertFormProps) => {
           (actionState.payload?.get("content") as string) ?? ticket?.content
         }
       />
-      <span className="text-xs text-red-500">
-        {actionState.fieldErrors.content?.[0]}
-      </span>
+      <FieldError actionState={actionState} name="content" />
 
       <SubmitButton label={ticket ? "Edit" : "Create"} />
       {actionState.message}
