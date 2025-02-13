@@ -11,6 +11,7 @@ import { Ticket } from "@prisma/client";
 import { useActionState } from "react";
 import { upsertTicket } from "../actions/upsert-ticket";
 import { toast } from "sonner";
+import { Form } from "@/components/form/form";
 
 type TicketUpsertFormProps = {
   ticket?: Ticket;
@@ -36,7 +37,7 @@ const TicketUpsertForm = ({ ticket }: TicketUpsertFormProps) => {
   });
 
   return (
-    <form action={action} className="flex flex-col gap-y-2">
+    <Form action={action} actionState={actionState}>
       <Label htmlFor="title"></Label>
       <Input
         id="title"
@@ -60,7 +61,7 @@ const TicketUpsertForm = ({ ticket }: TicketUpsertFormProps) => {
 
       <SubmitButton label={ticket ? "Edit" : "Create"} />
       {/* {actionState.message} */}
-    </form>
+    </Form>
   );
 };
 
