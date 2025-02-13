@@ -8,7 +8,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Ticket } from "@prisma/client";
-import { useActionState, useMemo } from "react";
+import { useActionState } from "react";
 import { upsertTicket } from "../actions/upsert-ticket";
 
 type TicketUpsertFormProps = {
