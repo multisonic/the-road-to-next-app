@@ -7,7 +7,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Ticket } from "@prisma/client";
-import { useActionState } from "react";
+import { useActionState, useEffect } from "react";
 import { upsertTicket } from "../actions/upsert-ticket";
 
 type TicketUpsertFormProps = {
@@ -19,6 +19,12 @@ const TicketUpsertForm = ({ ticket }: TicketUpsertFormProps) => {
     upsertTicket.bind(null, ticket?.id),
     EMPTY_ACTION_STATE
   );
+
+  useEffect(() => {
+    if (actionState.status === "SUCCESS") {
+      console.log(actionState.message);
+    }
+  }, [actionState]);
 
   return (
     <form action={action} className="flex flex-col gap-y-2">
@@ -44,7 +50,7 @@ const TicketUpsertForm = ({ ticket }: TicketUpsertFormProps) => {
       <FieldError actionState={actionState} name="content" />
 
       <SubmitButton label={ticket ? "Edit" : "Create"} />
-      {actionState.message}
+      {/* {actionState.message} */}
     </form>
   );
 };
