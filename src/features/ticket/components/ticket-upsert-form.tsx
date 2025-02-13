@@ -8,7 +8,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Ticket } from "@prisma/client";
-import { useActionState } from "react";
+import { useActionState, useMemo } from "react";
 import { upsertTicket } from "../actions/upsert-ticket";
 
 type TicketUpsertFormProps = {
@@ -21,16 +21,30 @@ const TicketUpsertForm = ({ ticket }: TicketUpsertFormProps) => {
     EMPTY_ACTION_STATE
   );
 
-  useActionFeedback(actionState, {
-    onSuccess: ({ actionState }) => {
-      console.log(actionState.message);
-      // TODO optionally handle success
-    },
-    onError: ({ actionState }) => {
-      console.log(actionState.message);
-      // TODO optionally handle error
-    },
-  });
+  const options = useMemo(
+    () => ({
+      onSuccess: ({ actionState }: { actionState: ActionState }) => {
+        console.log(actionState);
+        // TODO optionally handle success
+      },
+      onError: ({ actionState }: { actionState: ActionState }) => {
+        console.log(actionState);
+        // TODO optionally handle error
+      },
+    }),
+    []
+  );
+
+  // useActionFeedback(actionState, {
+  //   onSuccess: ({ actionState }) => {
+  //     console.log(actionState.message);
+  //     // TODO optionally handle success
+  //   },
+  //   onError: ({ actionState }) => {
+  //     console.log(actionState.message);
+  //     // TODO optionally handle error
+  //   },
+  // });
 
   return (
     <form action={action} className="flex flex-col gap-y-2">
