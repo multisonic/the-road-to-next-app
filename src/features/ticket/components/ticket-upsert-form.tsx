@@ -10,6 +10,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Ticket } from "@prisma/client";
 import { useActionState } from "react";
 import { upsertTicket } from "../actions/upsert-ticket";
+import { toast } from "sonner";
 
 type TicketUpsertFormProps = {
   ticket?: Ticket;
@@ -23,12 +24,14 @@ const TicketUpsertForm = ({ ticket }: TicketUpsertFormProps) => {
 
   useActionFeedback(actionState, {
     onSuccess: ({ actionState }) => {
-      console.log(actionState.message);
-      // TODO optionally handle success
+      if (actionState.message) {
+        toast.success(actionState.message);
+      }
     },
     onError: ({ actionState }) => {
-      console.log(actionState.message);
-      // TODO optionally handle error
+      if (actionState.message) {
+        toast.error(actionState.message);
+      }
     },
   });
 
