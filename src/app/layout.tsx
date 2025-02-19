@@ -1,10 +1,9 @@
-import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
 import { Header } from "@/components/header";
 import { ThemeProvider } from "@/components/theme/theme-provider";
+import type { Metadata } from "next";
+import { Geist, Geist_Mono } from "next/font/google";
 import { Toaster } from "sonner";
-import { RedirectToast } from "@/components/redirect-toast";
+import "./globals.css";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -46,7 +45,6 @@ export default function RootLayout({
             {children}
           </main>
           <Toaster expand />
-          <RedirectToast />
         </ThemeProvider>
       </body>
     </html>
