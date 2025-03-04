@@ -32,10 +32,15 @@ export const upsertTicket = async (
       bounty: formData.get("bounty"),
     });
 
+    const dbData = {
+      ...data,
+      bounty: data.bounty * 100,
+    };
+
     await prisma.ticket.upsert({
       where: { id: id || "" },
-      update: data,
-      create: data,
+      update: dbData,
+      create: dbData,
     });
   } catch (error) {
     return fromErrorToActionState(error, formData);
